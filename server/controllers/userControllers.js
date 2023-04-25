@@ -62,4 +62,15 @@ const authUser = asyncErrorHandler(async (req,res) => {
 })
 
 
-module.exports = { registerUser, authUser }
+const allUsers = asyncErrorHandler(async (req, res) => {
+    const keyword = req.query.search ? {
+        $or: [
+            { username: {$regex: req.query.search, $options: "i"}}
+        ]    
+    } : {}
+    const users = await User.find(keyword).find({_id : {$ne: req.User.id}});
+    res.send(users);
+})
+
+
+module.exports = { registerUser, authUser, allUsers }

@@ -1,11 +1,13 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-
+import React, { useState } from 'react'
+import Register from './Register'
+import Login  from './Login'
 function Auth() {
+  const [sw, setSw] = useState(true)
   return (
-    <>
-      <Outlet/>
-    </>
+    sw ? 
+      <Login setSw={setSw}/>
+      :<Register setSw={setSw}/>
+
   )
 }
 

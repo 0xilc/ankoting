@@ -5,7 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 
-function Login() {
+function Login({setSw}) {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -65,7 +65,7 @@ function Login() {
                 <div className='tx-input-submit' onClick={handleSubmit}>Login</div>
               </div>
               <div className='form-row'>
-                <Link className='active-text' to="/auth/register">Don't you have an account? Register</Link>
+                <p className='active-text link' onClick={()=>setSw(false)}>Don't you have an account? Register</p>
               </div>
               <div className='form-row'>
                 <Link className='passive-text' to="/forgot-password">Forgot Password?</Link>

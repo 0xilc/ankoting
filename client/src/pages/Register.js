@@ -4,8 +4,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-function Register() {
 
+function Register({setSw}) {
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
@@ -38,7 +39,7 @@ function Register() {
       navigate('/');
     } catch(error)
     {
-      toast.error(`${username} is taken!`)
+      toast.error(`An error occurred!`)
       console.log(error)
     }
   } 
@@ -74,7 +75,7 @@ function Register() {
                   <div className='tx-input-submit' onClick={handleSubmit}>Register</div>
                 </div>
                 <div className='form-row'>
-                  <Link className='active-text' to="/auth/login">Do you have an account? Login!</Link>
+                  <p className='active-text link' onClick={()=> setSw(true)}>Do you have an account? Login!</p>
                 </div>
               </form>
             </div>

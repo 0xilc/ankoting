@@ -1,11 +1,12 @@
 import {createBrowserRouter} from "react-router-dom";
 import {NotFound,Auth,Login,Register,Main,Profile,AuthSelf}  from "./pages";
 import App from './App';
+import ChatProvider from './context/ChatProvider';
 
 export const router = createBrowserRouter([
     {
       path: "/",
-      element: <App/>,
+      element: <ChatProvider><App/></ChatProvider>,
       children: [
         {
             index: true,
@@ -13,21 +14,7 @@ export const router = createBrowserRouter([
         },
         {
             path: "/auth",
-            element: <Auth/>,
-            children: [
-                {
-                    index: true,
-                    element: <AuthSelf/>,
-                },
-                {
-                    path:"/auth/login",
-                    element: <Login/>
-                },
-                {
-                    path:"/auth/register",
-                    element: <Register/>
-                }
-            ]
+            element: <Auth/>
         },
         {
             path: "/profile",
@@ -36,7 +23,6 @@ export const router = createBrowserRouter([
       ]
   
     },
-
     {
         path: "*",
         element: <NotFound/>
